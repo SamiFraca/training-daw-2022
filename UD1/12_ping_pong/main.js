@@ -1,5 +1,8 @@
 function pingPong() {
-
+    for (i = 0; i < 100; i++) {
+        console.log(i)
+        i % 5 == 0 && !(i % 10 == 0) ? console.log(i + " PING") : i % 10 == 0 ? console.log(i + " PONG") : " "; 
+    }
 }
 
 pingPong()
