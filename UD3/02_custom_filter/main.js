@@ -1,15 +1,34 @@
 const assert = require('assert').strict;
+function select(array, conditionCallback) {
+    let result = []
 
-function select(array, condition) {
+    for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+
+        if (conditionCallback(element)) {
+            result.push(element)
+        }
+    }
+    console.log(result)
+    return result
 }
-
 let values = [1, 2, 3, 5, 7, 13, 17, 23, 29]
 
+function pairs(values) {
+    return values % 2 === 0
+}
+
+function gt15(values) {
+    return values > 15
+}
+
+
+let lt10 = (values) => values < 10;
 // sólo pares
-assert.deepStrictEqual(select(values, pairs), [2])
+// assert.deepStrictEqual(select(values, pairs), [2])
 
-// mayores que 15
-assert.deepStrictEqual(select(values, gt15), [17, 23, 29])
+//  mayores que 15
+// assert.deepStrictEqual(select(values, gt15), [17, 23, 29])
 
-// menores de 10
+// // menores de 10
 assert.deepStrictEqual(select(values, lt10), [1, 2, 3, 5, 7])
