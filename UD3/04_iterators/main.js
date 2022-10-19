@@ -29,27 +29,38 @@ var pilots = [
   }
 ];
 
-function iterateSimple() {
+function iterateSimple(pilot) {
+  for (let index = 0; index < pilot.length; index++) {
+    const element = pilot[index];
+    console.log(element)
+  }
 }
-function iterateForEach() {
+function iterateForEach(pilot) {
+  pilot.forEach(element => {
+    console.log(element)
+  });
 }
 function mapIds() {
+  pilots.map((pilot) => {
+    console.log(pilot.id)
+  })
 }
-function rebels() {
+function rebels(pilot) {
+  return pilot.filter(rebels => rebels.faction === "Rebels")
 }
-function totalFaction(faction) {
+function totalFaction(Faction) {
+  return (pilots.filter(rebels => rebels.faction === Faction)).length
 }
 function avgYears(faction) {
+  return pilots.filter(rebels => rebels.faction === faction).reduce((a, b) => a + b.years, 0) / pilots.filter(rebels => rebels.faction === faction).length
 }
-
-// use console.log
-iterateSimple()
-iterateForEach()
+iterateSimple(pilots)
+iterateForEach(pilots)
 try {
-  assert.deepStrictEqual(mapIds(), [2,8,40,66])
+  assert.deepStrictEqual(mapIds(), [2, 8, 40, 66])
   assert.deepStrictEqual(rebels(), [pilots[0], pilots[3]])
 
-  assert.deepStrictEqual(totalFaction('Rebels'), 2)
+assert.deepStrictEqual(totalFaction("Rebels"), 2)
 
   assert.deepStrictEqual(avgYears('Rebels'), 22.5)
   assert.deepStrictEqual(avgYears('Empire'), 25)
