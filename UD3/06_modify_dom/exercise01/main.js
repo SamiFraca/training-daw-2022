@@ -9,7 +9,7 @@ window.onload = function (e) {
     for (let i = 0; i < articles.length; i++) {
         ClassArticles = articles[i].getElementsByClassName("first")
     }
-       //Seleccionar todos lo elementos li con class == item
+    //Seleccionar todos lo elementos li con class == item
     var tagLi = document.getElementsByTagName("li")
     for (var i = 0; i < tagLi.length; i++) {
         console.log(tagLi[i].getElementsByClassName("item").length)
@@ -22,7 +22,9 @@ window.onload = function (e) {
     }
     "-----------------------------------------------"
     //Cambiar el código de fondo del primer párrafo
-    var divs = document.querySelector("article").innerHTML = "HOLA HOLA HOLA HOLA";
-
-    document.getElementsByTagName("button")
+    document.querySelector("article").innerHTML = "HOLA HOLA HOLA HOLA";
+    //Cambiar el código de fondo del primer párrafo
+    document.getElementById("introduction").style.backgroundColor = "yellow"
+    //Cambiar el color de frente (forecolor) de los elementos buttons dentro de class == buttons
+    document.querySelectorAll(".buttons > button").forEach(e => e.style.color = "green");
 }
