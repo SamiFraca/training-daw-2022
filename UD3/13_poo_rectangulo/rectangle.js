@@ -60,7 +60,7 @@ class Rectangle {
 
 
 let r1 = new Rectangle( 2,9);
-let r2 = new Rectangle(1, 10);
+let r2 = new Rectangle(0, 1);
 r1.print()
 r2.print()
 let area = r1.area();
