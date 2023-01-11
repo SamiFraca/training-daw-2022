@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
+
 <body>
   <main>
     Sample vuejs application
-
     <div id="app">
-      {{ message }}
+      <p>{{ count }}</p>
+      <button @click="decrement">Decrementar</button>
+      <button @click="increment">Incrementar</button>
     </div>
   </main>
 
@@ -19,9 +22,20 @@
     let app = new Vue({
       el: '#app',
       data: {
-        message: 'Hello Vue!!'
+        message: 'Hello Vue!!',
+        count:0
+      },
+      methods: {
+        increment() {
+          this.count++;
+        },
+        decrement() {
+          this.count--;
+        }
       }
+
     })
   </script>
 </body>
+
 </html>

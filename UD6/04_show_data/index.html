@@ -12,6 +12,10 @@
 
     <div id="app">
       {{ message }}
+      {{ name }}
+      {{ surname }}
+      {{ score }}
+      {{ rank }}
     </div>
   </main>
 
@@ -19,7 +23,11 @@
     let app = new Vue({
       el: '#app',
       data: {
-        message: 'Hello Vue!!'
+        message: 'Hello Vue!!',
+        name:"Sami",
+        surname:'Fraca',
+        score:232,
+        rank:2
       }
     })
   </script>
