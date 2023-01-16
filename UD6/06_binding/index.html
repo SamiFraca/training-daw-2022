@@ -11,8 +11,9 @@
     Sample vuejs application
 
     <div id="app">
-      {{ message }}
-      <div title="{{message}}">Example of title</div>
+      {{ message }}{{counter}}
+      <div  v-bind:title="counter" >Example of title</div>
+      <button @click="counter++">Click</button>
     </div>
   </main>
 
@@ -20,7 +21,8 @@
     let app = new Vue({
       el: '#app',
       data: {
-        message: 'Hello Vue!!'
+        message: 'Hello Vue!!',
+        counter:0
       }
     })
   </script>
