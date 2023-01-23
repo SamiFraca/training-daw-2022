@@ -1,23 +1,35 @@
 <template>
   <div id="app">
-    Nombre: <input @change="changeText" :value="nombre" />
-    Apellido: <input v-model="surname" />
+    Nombre:
+    <input v-model="nombre" />
+    Apellido:
+    <input v-model="surname" />
+    Consentimiento <input type="checkbox" v-model="consent">
+    <button :disabled="!consent" @click="send">Enviar</button>
+    
   </div>
 </template>
 
 <script>
 export default {
-  name: '',
+  name: "",
   data() {
     return {
-      nombre: 'texto',
-      surname: 'value'
-    }
+      nombre: "texto",
+      surname: "value",
+      consent: false,
+    };
   },
   methods: {
     changeText(e) {
-      this.nombre = e.target.value
+      this.nombre = e.target.value;
+    },
+    send(){
+       console.log(this.nombre,this.surname)
+       this.nombre='';
+       this.surname='';
+       this.consent=false;
     }
-  }
-}
+  },
+};
 </script>
