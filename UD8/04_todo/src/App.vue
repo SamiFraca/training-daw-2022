@@ -5,7 +5,8 @@
     <button @click="addTask">Add</button>
     <div id="content">
       <Task
-        v-for="task in tasks" :key="task.id"
+        v-for="task in tasks"
+        :key="task.id"
         :id="task.id"
         :name="task.name"
         :done="task.done"
@@ -16,25 +17,40 @@
 </template>
 
 <script>
-import Task from "./components/Task.vue"
+import Task from "./components/Task.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Task
+    Task,
   },
   data() {
     return {
-      taskName: '',
+      taskName: "",
       tasks: [
-        { id: 0, name: 'Hacer los deberes', done: false },
-        { id: 1, name: 'Preparar exámen de asignatura :)', done: true },
-      ]
-    }
+        { id: 0, name: "Hacer los deberes", done: false },
+        { id: 1, name: "Preparar exámen de asignatura :)", done: true },
+      ],
+    };
   },
   methods: {
-  }
-}
+    onMark(id) {
+      console.log(`tarea marcada ${id}`);
+      let task = this.tasks.filter((t) => t.id === id)[0];
+      task.done = !task.done;
+    },
+    addTask() {
+      if (this.taskName.trim() !== "") {
+        this.tasks.push({
+        id: this.tasks.length,
+        name: this.taskName,
+        done: false
+        })
+        this.taskName = "";
+      }
+    },
+  },
+};
 </script>
 
 <style>
