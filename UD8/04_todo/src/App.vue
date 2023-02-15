@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <h2>TO-DO List</h2>
-    <input type="text" v-model="taskName" />
-    <button @click="addTask">Add</button>
+    <InputTask @newTask="addTask"></InputTask>
     <div id="content">
       <Task
         v-for="task in tasks"
@@ -19,11 +17,12 @@
 
 <script>
 import Task from "./components/Task.vue";
+import InputTask from "./components/InputTask"
 
 export default {
   name: "App",
   components: {
-    Task,
+    Task,InputTask
   },
   data() {
     return {
@@ -40,15 +39,12 @@ export default {
       let task = this.tasks.filter((t) => t.id === id)[0];
       task.done = !task.done;
     },
-    addTask() {
-      if (this.taskName.trim() !== "") {
-        this.tasks.push({
-          id: this.tasks.length,
-          name: this.taskName,
-          done: false,
-        });
-        this.taskName = "";
-      }
+    addTask(taskName) {
+      this.tasks.push({
+        id: this.tasks.length,
+        name: taskName,
+        done: false,
+      });
     },
     Clear() {
       if (this.tasks.length > 0) {
