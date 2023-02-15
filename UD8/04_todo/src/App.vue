@@ -13,6 +13,7 @@
         @mark="onMark"
       />
     </div>
+    <button @click="Clear">Clear</button>
   </div>
 </template>
 
@@ -42,11 +43,16 @@ export default {
     addTask() {
       if (this.taskName.trim() !== "") {
         this.tasks.push({
-        id: this.tasks.length,
-        name: this.taskName,
-        done: false
-        })
+          id: this.tasks.length,
+          name: this.taskName,
+          done: false,
+        });
         this.taskName = "";
+      }
+    },
+    Clear() {
+      if (this.tasks.length > 0) {
+        this.tasks = [];
       }
     },
   },
